@@ -39,16 +39,16 @@ def main(argv):
         d = os.path.join(dest, rel, f)
 
         if os.path.exists(d): 
-          whisper_fill.main([s, d])
           print 'fill {0} {1}'.format(s, d)
+          whisper_fill.main([s, d])
         else:
-          shutil.copy(s, os.path.join(d, rel))
-          print 'copy {0} {1}'.format(s, os.path.join(d,rel))
+          print 'copy {0} {1}'.format(s, d)
+          shutil.copy(s, d)
     else:
+      print 'copytree {0} {1}'.format(s, d)
       s = os.path.join(src, rel)
       d = os.path.join(dest, rel)
       shutil.copytree(s, d)
-      print 'copytree {0} {1}'.format(s, d)
 
 if __name__ == "__main__":
   main(sys.argv[1:])
